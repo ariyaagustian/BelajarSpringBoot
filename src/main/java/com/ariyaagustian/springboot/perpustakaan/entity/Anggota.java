@@ -1,25 +1,19 @@
 package com.ariyaagustian.springboot.perpustakaan.entity;
 
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString(exclude = "daftarBuku")
 @Entity
-@Table(name = "pengarang")
-public class Pengarang {
+@Table(name = "anggota")
+public class Anggota {
 
     @Id
     @GenericGenerator(name = "uuid_gen", strategy = "uuid2")
@@ -30,11 +24,10 @@ public class Pengarang {
     @Column(name = "nama", nullable = false)
     private String nama;
 
-    @Type(type = "text")
-    @Column(name = "alamat")
-    private String alamat;
+    @Column(name = "nomor_ktp", nullable = false)
+    private String nomor_ktp;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "pengarang")
-    private List<Buku> daftarBuku = new ArrayList<>();
+    @Column(name = "alamat")
+    @Type(type = "text")
+    private String alamat;
 }
