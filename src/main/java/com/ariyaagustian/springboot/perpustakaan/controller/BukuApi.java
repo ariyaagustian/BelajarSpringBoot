@@ -28,7 +28,7 @@ public class BukuApi {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Buku> findById(@PathVariable String id) {
+    public ResponseEntity<Buku> findById(@PathVariable("id") String id) {
         Optional<Buku> bukuOptional = bukuRepository.findById(id);
         if (bukuOptional.isPresent()) {
             return ResponseEntity.ok(bukuOptional.get());
